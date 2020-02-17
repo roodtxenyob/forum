@@ -1,0 +1,13 @@
+{
+    "editor.tabSize": 2,
+    "files.exclude":{
+        "**/.git": true,
+        "**/node_modules" : true,
+        "**/.gitignore" : true,
+        "**/tsconfig.json" : true,
+        "**/README.md" : true,
+        "**/package-lock.json" : true,
+        "**/babel.config.js" : true,
+        "**/gulpfile.js" : true
+    }
+}
