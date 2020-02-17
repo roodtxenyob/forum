@@ -108,7 +108,7 @@
       })
     }
     
-    private compactObj (obj, fn) {
+    private compactObj (obj:any, fn:any):any {
       for (let i in obj) {
         if (typeof obj[i] === 'object') {
           this.compactObj(obj[i], fn)
@@ -119,7 +119,7 @@
       }
     }
  
-    private isEmpty (foo) {
+    private isEmpty (foo:any):any {
         if (typeof foo === 'object') {
           for (let i in foo) {
             return false

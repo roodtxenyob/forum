@@ -1,7 +1,8 @@
 "use strict";
 module.exports = function (request, response) {
+    console.log(1 + 15 * (request.body.count * 1 - 1), 15 + 15 * (request.body.count * 1 - 1));
     var mysqldb = require('../util/SqlHelper');
-    var sql = "SELECT * FROM discuss ORDER BY replyDate DESC;"; // LIMIT 0,10
+    var sql = "SELECT * FROM discuss ORDER BY replyDate DESC LIMIT " + (1 + 15 * (request.body.count * 1 - 1)) + "," + (15 + 15 * (request.body.count * 1 - 1)) + ";"; // 
     new Promise(function (resolve, reject) {
         mysqldb.query(sql, function (error, result) {
             if (error) {

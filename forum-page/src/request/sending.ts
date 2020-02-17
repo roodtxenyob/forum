@@ -16,10 +16,11 @@ export function postIsLogin(data:any){
   })
 }
 
-export function postDiscussList(){
+export function postDiscussList(data:any){
   return requestConstructor({
     url: '/discussList',
     method: 'post',
+    data
   })
 }
 

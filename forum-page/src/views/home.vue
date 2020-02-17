@@ -76,11 +76,14 @@ export default class home extends Vue{
   private dList:any = [];
   //各列高度
   private listHeight:any = [];
+  //请求计数
+  private requestListCount:number = 1;
   //created
   private created():any{
     //请求帖子列表
-    postDiscussList().
-    then((result:any) => {
+    postDiscussList({
+      count:this.requestListCount
+    }).then((result:any) => {
       this.discussList = result.list;
 
       let arrContainer:any = [];
@@ -88,11 +91,35 @@ export default class home extends Vue{
       arrContainer = this.discussList.shift();
       this.aList.push(arrContainer);
       arrContainer = [];
-
+      this.requestListCount ++ ;
     }).catch((error:any) => {
       console.log(error)
     })
+
+    addEventListener('scroll',this.scrollLoading);
   }
+  private scrollLoading(){
+    if((Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)-
+    (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop)) <= 1000){
+      //loading
+      postDiscussList({
+        count:this.requestListCount
+      }).then((result:any) => {
+        this.discussList = result.list;
+
+        let arrContainer:any = [];
+        //先渲染4个
+        arrContainer = this.discussList.shift();
+        this.aList.push(arrContainer);
+        arrContainer = [];
+        this.requestListCount ++ ;
+      }).catch((error:any) => {
+        console.log(error)
+      })
+    }
+  }
+
+
   private getHight(){
     if(this.discussList.length != 0){ 
       let arrContainer:any = [];

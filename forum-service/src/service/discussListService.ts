@@ -1,6 +1,7 @@
 module.exports = function(request:any,response:any){
-  let mysqldb:any = require('../util/SqlHelper');
-  let sql:string = `SELECT * FROM discuss ORDER BY replyDate DESC;`;// LIMIT 0,10
+  console.log(1+15*(request.body.count*1-1),15+15*(request.body.count*1-1));
+  let mysqldb:any = require('../util/SqlHelper'); 
+  let sql:string = `SELECT * FROM discuss ORDER BY replyDate DESC LIMIT ${1+15*(request.body.count*1-1)},${15+15*(request.body.count*1-1)};`;// 
   new Promise((resolve:any,reject:any) => {
     mysqldb.query(sql,(error:any,result:any) => {
       if(error){
