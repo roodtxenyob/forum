@@ -8,6 +8,14 @@ export function postLogin(data:any){
   })
 }
 
+export function postRegister(data:any){
+  return requestConstructor({
+    url: '/register',
+    method: 'post',
+    data
+  })
+}
+
 export function postIsLogin(data:any){
   return requestConstructor({
     url: '/isLogin',

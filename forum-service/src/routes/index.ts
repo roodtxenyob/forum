@@ -7,6 +7,7 @@ let postDiscussService:any = require('../service/postDiscussService');
 let postDiscussDetailService:any = require('../service/postDiscussDetailService');
 let postReply:any = require('../service/postReplyService');
 let postdelf:any = require('../service/postdelfService');
+let postRegister:any = require('../service/postRegister');
 const router = express.Router();
 
 /* GET home page. */
@@ -27,4 +28,6 @@ router.post('/api/postDiscussDetail', postDiscussDetailService);
 router.post('/api/postReply', postReply);
 
 router.post('/api/postdelf',postdelf);
+
+router.post('/api/register',postRegister);
 export default router;

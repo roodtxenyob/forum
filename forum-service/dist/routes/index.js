@@ -8,6 +8,7 @@ var postDiscussService = require('../service/postDiscussService');
 var postDiscussDetailService = require('../service/postDiscussDetailService');
 var postReply = require('../service/postReplyService');
 var postdelf = require('../service/postdelfService');
+var postRegister = require('../service/postRegister');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -20,4 +21,5 @@ router.post('/api/postDiscuss', postDiscussService);
 router.post('/api/postDiscussDetail', postDiscussDetailService);
 router.post('/api/postReply', postReply);
 router.post('/api/postdelf', postdelf);
+router.post('/api/register', postRegister);
 exports.default = router;
